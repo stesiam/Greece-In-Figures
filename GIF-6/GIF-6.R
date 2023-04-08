@@ -50,7 +50,7 @@ map = ggplot2::ggplot(data = greece_region_map) +
                family="mont") +
   labs(
     title = "Electricity Consumption",
-    subtitle = "Consumption in thousands kwh per thousand inhabitants (regional data, 2020)",
+    subtitle = "Consumption in thousands kwh per thousand inhabitants (regional data, 2012)",
     caption = "**stesiam** | Source: Hellenic Statistical Authority"
   ) +
   scale_fill_gradient(low='white', high='#e5de00') +

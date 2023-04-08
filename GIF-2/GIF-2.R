@@ -35,7 +35,7 @@ greece_region_map$pop2021 = c(562201, 1795669, 254595,
                               319991, 688255, 194943,
                               327820, 508254, 648220,
                               539535, 204532, 624408,
-                              3828434)
+                              3814064)
 
 greece_region_map$per1000 = greece_region_map$dentists/greece_region_map$pop2021 *1000
 
