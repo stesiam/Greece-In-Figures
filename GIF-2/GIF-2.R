@@ -15,7 +15,7 @@ showtext_auto()
 
 ## Read shapefile
 
-greece_region_map = st_read("GIF-1/Greece_Region_Map/d7f50467-e5ef-49ac-a7ce-15df3e2ed738.shp") 
+greece_region_map = st_read("Shapefiles/Greece_Region_Map/d7f50467-e5ef-49ac-a7ce-15df3e2ed738.shp") 
 
 ## Rename regions
 
