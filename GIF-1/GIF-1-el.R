@@ -4,6 +4,7 @@ library(dplyr)
 library(fuzzyjoin)
 
 library(ggplot2)
+library(MetBrewer)
 library(sf)
 library(glue)
 library(ggtext)
@@ -80,7 +81,10 @@ caption_text = glue("*Δεδομένα χρονιάς:* 2021 | *Έτος βάσ�
 
 # Visualization
 
+bg_gradient <- grid::linearGradient(colours = rev(MetBrewer::met.brewer("Veronese")[4:5]))
+
 map = ggplot2::ggplot(data = matched_data) +
+  scale_x_continuous(limits = c(19.7, 28.3)) +
   geom_sf(aes(fill = gdp_2021)) +
   
   # Eastern Macedonia and Thrace
@@ -228,20 +232,25 @@ map = ggplot2::ggplot(data = matched_data) +
   theme_void(base_size = 11) +
   theme(
     plot.title = element_markdown(family = "serif", hjust = 0.5, size = 20,
-                                  margin = margin(t = 20, b = 10)),
-    plot.subtitle = element_textbox_simple(size = 10.6, family = "serif", hjust = 0.5, 
-                                           lineheight = 1.2),
+                                  margin = margin(t = 20, b = 10),
+                                  color = "white"),
+    plot.subtitle = element_textbox_simple(size = 9, family = "serif", hjust = 0.5, 
+                                           lineheight = 1.2, color = "white",
+                                           margin = margin(l = 10, r = 10)),
     plot.caption = element_markdown(family = "serif", hjust = 0.5,
                                     margin = margin(t = 5, b = 5),
-                                    lineheight = 1.2),
-    legend.position = "none"
+                                    lineheight = 1.2,
+                                    color = "white",
+                                    size = 7),
+    legend.position = "none",
+    plot.background = element_rect(fill = bg_gradient, color = "transparent")  
   )
 
 ggsave(
   filename = "GIF-1/GIF-1-el.png",
   plot = map,
-  width = 7,
+  width = 5.035,
   height = 7,
   device = "png",
-  bg = "white")
+  dpi = 300)
 

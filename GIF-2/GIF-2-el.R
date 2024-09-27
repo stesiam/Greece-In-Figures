@@ -99,11 +99,11 @@ shp_data_join = st_as_sf(shp_data_join)
 
 ## Viz texts
 
-title_text = glue("<b>Dentists by Region</b>")
+title_text = glue("<b>Οδοντίατροι ανά Περιφέρεια</b>")
 subtitle_text = glue("Regional GDP/capita (2021) indicates the average welath of the citizens of the specified region
                         **Attica**, **Central Greece** and **South Aegean islands** are the regions with the highest GDP/Capita.
                         On the other side, **North Aegean**, **Epirus** and **Eastern Macedonia, Thrace** have the least wealthy citizens.")
-caption_text = glue("*Data of:* 2022 - Regional Population is based on 2021 census<br><b> Source:</b> Panhellenic Medical Association (PMA) and Hellenic Dental Association (HAD) <br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
+caption_text = glue("*Δεδομένα χρονιάς:* 2022 - Περιφερειακός πληθυσμός βασίζεται στην απογραφή του 2021<br><b> Δεδομένα:</b> Πανελλήνιος Ιατρικός Σύλλογος (ΠΙΣ) and Ελληνική Οδοντιατρική Ομοσπονδία (ΕΟΟ) <br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
 
 
 bg_gradient <- grid::linearGradient(colours = rev(MetBrewer::met.brewer("Pillement")[3:4]))
@@ -259,27 +259,25 @@ map = ggplot2::ggplot(data = shp_data_join) +
   scale_fill_gradientn(colors = met.brewer("OKeeffe2")) +
   theme_void(base_size = 11) +
   theme(
-    plot.title = element_markdown(family = "clim", hjust = 0.5, size = 20,
+    plot.title = element_markdown(family = "serif", hjust = 0.5, size = 20,
                                   margin = margin(t = 20, b = 10),
                                   color = "white"),
-    plot.subtitle = element_textbox_simple(size = 9, family = "mont", hjust = 0.5, 
+    plot.subtitle = element_textbox_simple(size = 9, family = "serif", hjust = 0.5, 
                                            lineheight = 1.2, color = "white",
                                            margin = margin(l = 10, r = 10)),
-    plot.caption = element_markdown(family = "mont", hjust = 0.5,
+    plot.caption = element_markdown(family = "serif", hjust = 0.5,
                                     margin = margin(t = 5, b = 5),
                                     lineheight = 1.2,
                                     color = "white",
                                     size = 7),
     legend.position = "none",
     plot.background = element_rect(fill = bg_gradient, color = "transparent"),
-    panel.background = element_rect(fill = bg_gradient, color = "transparent")
   )
 
 ggsave(
-  filename = "GIF-2/GIF-2.png",
+  filename = "GIF-2/GIF-2-el.png",
   height = 7,
-  width = 5.165,
+  width = 5.18,
   plot = map,
   device = "png",
   dpi = 300)
-
