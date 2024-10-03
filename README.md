@@ -36,3 +36,6 @@ A project to visualize Greece's main characteristics. I am using solely R for bo
 *Base geometry:* <a href="https://github.com/r-spatial/sf"><img src="https://r-spatial.github.io/sf/logo.png" height="30"><br></a>
 <img src="https://github.com/stesiam/Greece-In-Figures/blob/main/GIF-8/GIF-8.png" height="500"> 
 
+### Hpusehold Members
+*Base geometry:* <a href="https://github.com/r-spatial/sf"><img src="https://r-spatial.github.io/sf/logo.png" height="30"><br></a>
+<img src="https://github.com/stesiam/Greece-In-Figures/blob/main/GIF-9/GIF-9.png" height="500">

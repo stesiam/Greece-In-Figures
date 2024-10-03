@@ -120,11 +120,13 @@ data_shp_joined = stringdist_left_join(heatingOIl_pop_joined, shapefile,
 
 ## Viz texts
 
-title_text = glue("<b>Heating Oil Consumption</b>")
-subtitle_text = glue("Northern profectures of Greece have significantly higher cosumption of heating oil.
-                     An expected fact northern Greece cities have average temperatures of 2°C in January.
-                     On the other hand, Attiki and Crete (south Greece) averages at 10°C and 12°C, respectively.")
-caption_text = glue("*Data of:* 2022 - Regional Population is based on 2021 census<br><b> Source:</b> Ministry of Environment and Energy <br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
+title_text = glue("<b>Πετρέλαιο Θέρμανσης</b>")
+subtitle_text = glue("Οι περιφέρειες στα βόρεια της Ελλάδας of Greece παρουσιάζουν σημαντικά υψηλότερη κατανάλωση πετρελαίου θέρμανσης
+                      σε σχέση με την υπόλοιπη Ελλάδα.
+                      Αυτό είναι κάτι αναμενόμενο μιας και οι πόλεις στα βόρεια της χώρας έχουν μέση θερμοκρασία
+                      τους 2°C, τον Ιανουάριο. Από την άλλη μεριά, η Αττική και η Κρήτη όντας πιο νότια έχουν μέση θερμοκρασία
+                      10°C και 12°C τον Ιανουάριο, αντίστοιχα. Αυτό το γεγονός εξηγεί και τη χαμηλότερη κατανάλωση στις πιο νότιες περιοχές")
+caption_text = glue("*Μονάδα μέτρησης:* Λίτρα/κάτοικο **Δεδομένα χρονιάς:* 2022- Περιφερειακός πληθυσμός βασίζεται στην απογραφή του 2021<br><b> Πηγή:</b> Υπουργείο Περιβάλλοντος και Ενέργειας <br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
 
 ## Viz background
 
@@ -283,13 +285,13 @@ map = ggplot2::ggplot(data = data_shp_joined) +
   scale_fill_gradientn(colors = met.brewer("OKeeffe2")) +
   theme_void(base_size = 11) +
   theme(
-    plot.title = element_markdown(family = "clim", hjust = 0.5, size = 20,
+    plot.title = element_markdown(family = "serif", hjust = 0.5, size = 20,
                                   margin = margin(t = 20, b = 10),
                                   color = "white"),
-    plot.subtitle = element_textbox_simple(size = 9.5, family = "mont", hjust = 0.5, 
+    plot.subtitle = element_textbox_simple(size = 9, family = "serif", hjust = 0.5, 
                                            lineheight = 1.2, color = "white",
                                            margin = margin(l = 10, r = 10)),
-    plot.caption = element_markdown(family = "mont", hjust = 0.5,
+    plot.caption = element_markdown(family = "serif", hjust = 0.5,
                                     margin = margin(t = 5, b = 5),
                                     lineheight = 1.2,
                                     color = "white",
@@ -299,10 +301,9 @@ map = ggplot2::ggplot(data = data_shp_joined) +
   )
 
 ggsave(
-  filename = "GIF-5/GIF-5.png",
+  filename = "GIF-5/GIF-5-el.png",
   height = 7,
   width = 5.165,
   plot = map,
   device = "png",
   dpi = 300)
-
