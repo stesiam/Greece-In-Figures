@@ -64,11 +64,12 @@ d = fuzzyjoin::stringdist_left_join(shapefile, households , by = "NAMA2",
 
 ## Viz texts
 
-title_text = glue("<b>Household Members</b>")
-subtitle_text = glue("In Greece, with a population of 10.2 million, there are 4.3 million households. 
-                      Thessaly and Western Macedonia are the regions with the most numerous households. In contrast, 
-                     Attica and the Northern Aegean have, on average, households with the fewest members.")
-caption_text = glue("*Data of:* 2021<br><b> Source:</b> Hellenic Statistical Authority - Census 2021<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
+title_text = glue("<b>Μέλη Νοικοκυριού</b>")
+subtitle_text = glue("Στην Ελλάδα των 10.2 εκατομυριων κατοίκων υπάρχουν 4.3 εκ. νοικοκυριά.
+                     Η Θεσσαλία και η Δυτική Μακεδονία είναι οι περιφέρειες με τα
+                     πολυπληθέστερα νοικοκυριά. Σε αντιδιαστολή με τις παραπάνω, η Αττική και
+                     το Βόρειο Αιγαίο έχουν κατά μέσο όρο τα νοικοκυριά με τα λιγότερα μέλη.")
+caption_text = glue("*Δεδομένα χρονιάς:* 2021<br><b> Πηγή:</b> Ελληνική Στατιστική Υπηρεσία<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
 
 ## Viz background
 
@@ -229,13 +230,13 @@ map = ggplot2::ggplot(data = d) +
   scale_fill_gradientn(colors = c("grey90", "#CC5500")) +
   theme_void(base_size = 11) +
   theme(
-    plot.title = element_markdown(family = "clim", hjust = 0.5, size = 20,
+    plot.title = element_markdown(family = "serif", hjust = 0.5, size = 20,
                                   margin = margin(t = 20, b = 10),
                                   color = "white"),
-    plot.subtitle = element_textbox_simple(size = 9, family = "mont", hjust = 0.5, 
+    plot.subtitle = element_textbox_simple(size = 9, family = "serif", hjust = 0.5, 
                                            lineheight = 1.2, color = "white",
                                            margin = margin(l = 10, r = 10)),
-    plot.caption = element_markdown(family = "mont", hjust = 0.5,
+    plot.caption = element_markdown(family = "serif", hjust = 0.5,
                                     margin = margin(t = 5, b = 5),
                                     lineheight = 1.2,
                                     color = "white",
@@ -245,7 +246,7 @@ map = ggplot2::ggplot(data = d) +
   )
 
 ggsave(
-  filename = "GIF-9/GIF-9.png",
+  filename = "GIF-9/GIF-9-el.png",
   height = 7,
   width = 5.44,
   plot = map,

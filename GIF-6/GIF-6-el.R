@@ -116,7 +116,7 @@ regional_population = statistics_tables[[1]] |>
 
 
 electricity_consumption_raw = read_excel("GIF-6/electricity_2012.xls", 
-                                                             skip = 4) |>
+                                         skip = 4) |>
   select(c(1,3, last_col())) |>
   setNames(c("RegionGR", "Electricity", "RegionEN")) |>
   drop_na() %>%
@@ -130,9 +130,9 @@ electricity_consumption_raw = read_excel("GIF-6/electricity_2012.xls",
 # Join electricity and regional population datasets
 
 joined_data = stringdist_left_join(regional_population, electricity_consumption_raw, 
-                     by = "Region", 
-                     distance_col = "distance",
-                     max_dist = 10) |>
+                                   by = "Region", 
+                                   distance_col = "distance",
+                                   max_dist = 10) |>
   group_by(Region.x) |>
   dplyr::filter(distance == min(distance)) |>
   select(Region.x, Electricity, Population) |>
@@ -144,9 +144,9 @@ joined_data = stringdist_left_join(regional_population, electricity_consumption_
 #
 
 joined_data_shp = stringdist_left_join(shapefile, joined_data, 
-                                  by = "NAMA2", 
-                                  distance_col = "distance",
-                                  max_dist = 10) |>
+                                       by = "NAMA2", 
+                                       distance_col = "distance",
+                                       max_dist = 10) |>
   group_by(NAMA2.x) |>
   dplyr::filter(distance == min(distance)) |>
   distinct(NAMA2.x,.keep_all = TRUE) |>
@@ -159,11 +159,10 @@ joined_data_shp = stringdist_left_join(shapefile, joined_data,
 
 ## Viz texts
 
-title_text = glue("<b>Electricity Consumption</b>")
-subtitle_text = glue("The region with the highest per capita electricity consumption is the Peloponnese, 
-                      followed by Attica. All other regions have noticeably lower consumption. 
-                      It's important to note that the data refers solely to domestic usage.")
-caption_text = glue("Unit of Measurement:* kWh per apita <br> *Data of:* 2012 - Regional Population is based on 2021 census<br><b> Source:</b> Hellenic Statistical Authority<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
+title_text = glue("<b>Κατανάλωση Ρεύματος</b>")
+subtitle_text = glue("Η περιφέρεια με τη μεγαλύτερη κατανάλωση ρεύματος ανά κάτοικο είναι της Πελοπονήσου και ακολουθείται από την Αττική.
+                     Οι υπόλοιπες έχουν σημαντικά χαμηλότερη κατανάλωση. Αξίζει να σημειωθεί ότι τα δεδομένα αφορούν αποκλειστικά την οικιακή χρήση.")
+caption_text = glue("*Μονάδα μέτρησης:* Κιλοβατώρες/κάτοικο <br>*Δεδομένα χρονιάς:* 2012 - Περιφερειακός πληθυσμός βασίζεται στην απογραφή του 2021<br><b> Source:</b> Ελληνική Στατιστική Υπηρεσία<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
 
 ## Viz background
 
@@ -324,13 +323,13 @@ map = ggplot2::ggplot(data = joined_data_shp) +
   scale_fill_gradient(low = "grey90", high = "yellow2") +
   theme_void(base_size = 11) +
   theme(
-    plot.title = element_markdown(family = "clim", hjust = 0.5, size = 20,
+    plot.title = element_markdown(family = "serif", hjust = 0.5, size = 20,
                                   margin = margin(t = 20, b = 10),
                                   color = "white"),
-    plot.subtitle = element_textbox_simple(size = 9, family = "mont", hjust = 0.5, 
+    plot.subtitle = element_textbox_simple(size = 9, family = "serif", hjust = 0.5, 
                                            lineheight = 1.2, color = "white",
                                            margin = margin(l = 10, r = 10)),
-    plot.caption = element_markdown(family = "mont", hjust = 0.5,
+    plot.caption = element_markdown(family = "serif", hjust = 0.5,
                                     margin = margin(t = 5, b = 5),
                                     lineheight = 1.2,
                                     color = "white",
@@ -340,7 +339,7 @@ map = ggplot2::ggplot(data = joined_data_shp) +
   )
 
 ggsave(
-  filename = "GIF-6/GIF-6.png",
+  filename = "GIF-6/GIF-6-el.png",
   height = 7,
   width = 5.46,
   plot = map,
